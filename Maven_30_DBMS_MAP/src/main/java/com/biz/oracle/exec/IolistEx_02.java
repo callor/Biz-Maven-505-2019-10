@@ -9,7 +9,6 @@ public class IolistEx_02 {
 		IolistServiceV1 is = new IolistServiceV1();
 		is.selectMapListView();
 		
-		
 	}
 
 }
