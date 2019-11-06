@@ -9,8 +9,8 @@
 		<id column = "m_seq" property="m_seq"/>
 		<result column="m_subject" property="m_subject" />
 	
-		<collection property="m_seq" 
-					column="d_m_seq" 
+		<collection property="deList" 
+					column="m_seq" 
 					ofType="DetailDTO"
 			select="detail"	/>
 	</resultMap>
@@ -20,35 +20,29 @@
  	</select>
  	
  	<select id="detail" resultType="DetailDTO">
- 		SELECT d_seq, d_m_seq,d_subject, d_ok FROM tbl_detail
+ 		SELECT d_seq, d_m_seq,d_subject, d_ok 
+ 		FROM tbl_detail
+ 		WHERE d_m_seq = #{m_seq}
  	</select>
  	
- 	
- 	
- 	
  	<select id="findById"></select>
- 	<insert id="insert" parameterType="IolistDTO">
  	
- 		INSERT INTO tbl_iolist(
-		 	IO_SEQ,
-			IO_DATE,
-			IO_INOUT,
-			IO_QTY,
-			IO_PRICE,
-			IO_TOTAL,
-			IO_PCODE,
-			IO_DCODE
-		) VALUES( 
-		 	#{io_seq},
-			#{io_date},
-			#{io_inout},
-			#{io_qty},
-			#{io_price},
-			#{io_total},
-			#{io_pcode},
-			#{io_dcode}
+ 	<insert id="insertMaster" parameterType="MasterDTO">
+ 		<selectKey 
+ 				keyProperty="m_seq" 
+ 				order="BEFORE" 
+ 				resultType="Long">
+ 			SELECT SEQ_MASTER.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO tbl_master(
+ 			M_SEQ,
+ 			M_SUBJECT
+		) VALUES(
+			#{m_seq},
+			#{m_subject} 
 		)
  	</insert>
+
  	<update id="update"></update>
  	<delete id="delete"></delete>
  
