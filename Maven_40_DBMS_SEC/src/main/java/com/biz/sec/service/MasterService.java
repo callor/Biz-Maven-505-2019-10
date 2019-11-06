@@ -16,7 +16,9 @@ public class MasterService {
 	protected Scanner scanner;
 	
 	{
-		
+		// .openSession(true) 
+		//		auto Commit, INSERT, UPDATE, DETELE 자동 반영
+		// .openSession() : hand Commit 자동 반영 안된
 		mdDao = DBConnectionSEC
 				.getInstance()
 				.openSession(true)
