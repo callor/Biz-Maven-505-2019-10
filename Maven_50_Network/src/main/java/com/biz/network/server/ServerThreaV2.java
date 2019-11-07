@@ -20,15 +20,18 @@ public class ServerThreaV2 implements Runnable {
 		
 		// 클라언트 응답대기
 		try {
+		
+			int id = 0;
 			while(true) {
-				int id = (int)(Math.random() * 100)	;
+				// int id = (int)(Math.random() * 100)	;
 				client = this.server.accept();	
 				
 				ServerSubThreadV1 ss 
-					= new ServerSubThreadV1(client, id);
+					= new ServerSubThreadV1(client, ++id);
 				Thread tRun = new Thread(ss);
 				tRun.start();
 			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
