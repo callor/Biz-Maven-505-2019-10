@@ -30,8 +30,8 @@ public class DBConnectionSEC {
 		pbEnc.setAlgorithm("PBEWithMD5AndDES");
 		pbEnc.setPassword(saltPass);
 		
-		String userName = "OxqrjB3nNKrYZ/EREnoAEg==";
-		String password = "rS474HQX/VYR0INqmKApWg==";
+		String userName = "7fdHKwBMqCaXo6BrKPzUxA==";
+		String password = "l4lnLOlYvnuL7fNc0B3evQ==";
 		
 		/*
 		 * 
